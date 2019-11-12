@@ -1,0 +1,71 @@
+<span>{{ title }} app is running!</span>
+
+
+
+
+<!-- Resources -->
+<h2>Rate My Cake</h2>
+
+<div class="row">
+  <div class="col">
+
+    <form (submit)="onSubmit()">
+      <label for="">Baker Name:
+        <input type="text" name="name" [(ngModel)]="newCake.name">
+      </label>
+      <label for="">Image url:
+        <input type="text" name="img_url" [(ngModel)]="newCake.img_url">
+      </label>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <div class="col">
+
+    <div *ngFor="let cake of cakes">
+      <div class="row">
+        <div class="col">
+          <h5>{{cake.name}} <button (click)='deleteCakeFromService(cake._id)'>Delete</button> </h5>
+
+          <form (submit)="addCommentFromService(cake._id)">
+            <section>
+              <Select name="rate" [(ngModel)]="addRate.rate" ngDefaultControl>
+                <option value="5">5 Star</option>
+                <option value="4">4 Star</option>
+                <option value="3">3 Star</option>
+                <option value="2">2 Star</option>
+                <option value="1">1 Star</option>
+              </Select>
+            </section>
+            <textarea name="comment" id="" cols="30" rows="2" [(ngModel)]="addRate.comment" ngDefaultControl></textarea>
+            <input type="submit" value="Submit">
+            <!-- <input (click)="addCommentFromService(cake._id)" type="submit" value="Add Rate" /> -->
+          </form>
+        </div>
+        <div class="col">
+          <img src="{{cake.img_url}}" (click)="getOneFromService(cake._id)" alt="" style="width: 100px; height: 100px;">
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf='show'>
+  <h1>Avarage Rating: {{avg}} Stars</h1>
+  <h1>{{oneCake.name}}</h1>
+  <div *ngFor="let com of oneCake.comments">
+    <h2>{{com.rate}} Star {{ com.comment}}</h2>
+  </div>
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
