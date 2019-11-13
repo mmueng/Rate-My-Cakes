@@ -1,0 +1,15 @@
+<form (submit)="submitForm()">
+    <section>
+        <select name="ratingForm.rate" [(ngModel)]="ratingForm.rate">
+            <option value="5">5 Star</option>
+            <option value="4">4 Star</option>
+            <option value="3">3 Star</option>
+            <option value="2">2 Star</option>
+            <option value="1">1 Star</option>
+        </select>
+    </section>
+    <textarea name="ratingForm.comment" id="" cols="30" rows="2" [(ngModel)]="ratingForm.comment"></textarea>
+    <input type="submit" value="Submit">
+    <!-- <button (click)="addCommentFromService(cake.id)">Add Rate</button> -->
+    <!-- <input (click)="addCommentFromService(cake._id)" type="submit" value="Add Rate" /> -->
+</form>

@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import { HttpService } from './http.service';
 // import httpclient
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'; // <-- import FormsModule.
+import { FormsModule } from '@angular/forms';
+import { ShowCakeComponent } from './show-cake/show-cake.component';
+import { CakeRateComponent } from './cake-rate/cake-rate.component'; // <-- import FormsModule.
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShowCakeComponent,
+    CakeRateComponent
   ],
   imports: [
     BrowserModule,

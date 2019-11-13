@@ -1,0 +1,6 @@
+<h1>Avarage Rating-: {{Avg()}} Stars</h1>
+<h1>{{fromParent.name}}</h1>
+<div *ngFor="let com of fromParent.comments">
+    <h2>{{com.rate}} Star {{ com.comment}}</h2>
+
+</div>

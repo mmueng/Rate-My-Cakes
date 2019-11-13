@@ -55,9 +55,11 @@ app.get("/cake/:id", (req, res) => {
         .catch(err => res.json({ msg: "Error Somthing Went Wrong", err: err }))
 });
 
-app.post("/cake/:id", (req, res) => {
+app.put("/cake/:id", (req, res) => {
     const { id } = req.params;
-    Cake.findByIdAndUpdate(id, { $push: { comments: { rate: req.body.rate, comment: req.body.comment } } })
+    console.log(req.params.id);
+    console.log(req.body);
+    Cake.findByIdAndUpdate(req.params.id, { $push: { comments: { rate: req.body.rate, comment: req.body.comment } } })
         .then(data => res.json({ msg: "Success Add rate and comment", result: data }))
         .catch(err => res.json({ msg: "Error Something went wrong", err: err }))
 });

@@ -21,28 +21,19 @@
   </div>
   <div class="col">
 
-    <div *ngFor="let cake of cakes">
+    <div *ngFor="let cake of cakes; let i = index">
       <div class="row">
         <div class="col">
           <h5>{{cake.name}} <button (click)='deleteCakeFromService(cake._id)'>Delete</button> </h5>
 
-          <form (submit)="addCommentFromService(cake._id)">
-            <section>
-              <Select name="rate" [(ngModel)]="addRate.rate" ngDefaultControl>
-                <option value="5">5 Star</option>
-                <option value="4">4 Star</option>
-                <option value="3">3 Star</option>
-                <option value="2">2 Star</option>
-                <option value="1">1 Star</option>
-              </Select>
-            </section>
-            <textarea name="comment" id="" cols="30" rows="2" [(ngModel)]="addRate.comment" ngDefaultControl></textarea>
-            <input type="submit" value="Submit">
-            <!-- <input (click)="addCommentFromService(cake._id)" type="submit" value="Add Rate" /> -->
-          </form>
+          <!-- <form id="{{cake._id}}"> -->
+          <app-cake-rate [thisCake]="cake._id" (onSubmit)="onChildSubmit($event)"></app-cake-rate>
+
         </div>
         <div class="col">
-          <img src="{{cake.img_url}}" (click)="getOneFromService(cake._id)" alt="" style="width: 100px; height: 100px;">
+
+
+          <img src="{{cake.img_url}}" (click)="sayHello(cake)" style="width: 100px; height: 100px;">
         </div>
       </div>
 
@@ -51,16 +42,15 @@
   </div>
 </div>
 
-<div *ngIf='show'>
-  <h1>Avarage Rating: {{avg}} Stars</h1>
-  <h1>{{oneCake.name}}</h1>
-  <div *ngFor="let com of oneCake.comments">
-    <h2>{{com.rate}} Star {{ com.comment}}</h2>
-  </div>
+
+<div class="root">
+  <!-- tip: use css to place a border around your different components to better visualize them -->
+
+
+
+  <app-show-cake *ngIf="show" [fromParent]="CakeID"></app-show-cake>
+  <!-- use the selector of the task component to nest it within the root component -->
 </div>
-
-
-
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

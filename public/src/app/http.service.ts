@@ -26,7 +26,7 @@ export class HttpService {
     return this._http.delete(`/cake/${id}`);
   }
   addComment(addRate: any, id: string) {
-    return this._http.post(`/cake/${id}`, addRate);
+    return this._http.put(`/cake/${id}`, addRate);
   }
   getOne(id) {
     return this._http.get(`/cake/${id}`);
